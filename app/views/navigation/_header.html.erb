@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Nua Messaging</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+    aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav w-100">
+      <div class='mr-auto'>
+        <li class="nav-item active">
+          <%= link_to messages_path, class: 'nav-link' do %>
+          Inbox
+          <% end  %>
+        </li>
+      </div>
+      <div class='mr-2 text-white d-flex align-items-center'>
+        <%= @current_user.full_name%>
+      </div>
+      <div class="dropdown mr-2">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Change User
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <%=link_to "Patient", change_user_path('patient'), class:'dropdown-item'%>
+          <%=link_to "Doctor", change_user_path('doctor'), class:'dropdown-item'%>
+          <%=link_to "Admin", change_user_path('admin'), class:'dropdown-item'%>
+        </div>
+      </div>
+    </ul>
+  </div>
+</nav>
