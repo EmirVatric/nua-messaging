@@ -26,4 +26,13 @@ RSpec.describe Message, type: :model do
   it 'is sent to corrent outbox' do
     expect(Message.last.outbox).to eql(@patient.outbox)
   end
+
+  it 'increments doctors new messages in inbox' do
+    expect(@doctor.inbox.new_messages).to eql(1)
+  end
+
+  it 'decrements doctors new messages in inbox after the message is read' do
+    @message.update(read: true)
+    expect(@doctor.inbox.new_messages).to eql(0)
+  end
 end
